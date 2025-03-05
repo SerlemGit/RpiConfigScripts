@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 <add|remove> <command>"
@@ -35,9 +35,9 @@ remove_command() {
   fi
 }
 
-if [ "$ACTION" == "add" ]; then
+if [ "$ACTION" = "add" ]; then
   add_command
-elif [ "$ACTION" == "remove" ]; then
+elif [ "$ACTION" = "remove" ]; then
   remove_command
 fi
 
