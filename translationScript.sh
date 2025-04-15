@@ -2,7 +2,8 @@
 
 projectName=${PWD##*/}
 translationPath=./Ressources/Translations
+binPath=${CDRIVE}/Qt/5.15.2/msvc2019_64/bin
 
 mkdir -p ${translationPath}/
-${CDRIVE}/Qt/5.11.3/msvc2017_64/bin/lupdate.exe -recursive -no-obsolete ./ -ts ${translationPath}/${projectName}_fr.ts
-${CDRIVE}/Qt/5.11.3/msvc2017_64/bin/lrelease.exe ${translationPath}/${projectName}_fr.ts ${translationPath}/${projectName}_fr.qm
+${binPath}/lupdate.exe -recursive -no-obsolete ./ -ts ${translationPath}/${projectName}_fr.ts
+${binPath}/lrelease.exe ${translationPath}/${projectName}_fr.ts ${translationPath}/${projectName}_fr.qm
