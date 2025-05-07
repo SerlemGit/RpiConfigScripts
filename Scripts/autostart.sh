@@ -23,13 +23,23 @@ fi
 # Create autostart directory if needed
 mkdir -p "$AUTOSTART_DIR"
 
+# Determine terminal emulator
+if command -v lxterminal >/dev/null 2>&1; then
+  TERMINAL="lxterminal -e"
+elif command -v qterminal >/dev/null 2>&1; then
+  TERMINAL="qterminal -e"
+else
+  echo "No supported terminal emulator found (lxterminal or qterminal)."
+  exit 3
+fi
+
 # Create desktop file
 if [ ! -f "$DESKTOP_FILE" ]; then
   cat <<EOF > "$DESKTOP_FILE"
 [Desktop Entry]
 Type=Application
 Name=$ENTRY_NAME
-Exec=$EXECUTABLE_PATH
+Exec=$TERMINAL "$EXECUTABLE_PATH"
 X-GNOME-Autostart-enabled=true
 EOF
   chmod +x "$DESKTOP_FILE"
